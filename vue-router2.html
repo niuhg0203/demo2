@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./libs/vue.min.js"></script>
+    <script src="./libs/vue-router.js"></script>
+</head>
+<body>
+    <div id="box">
+        <h2>hellow vue!</h2>
+        <p>
+            <router-link to="/user/foo">/user/foo</router-link>
+            <router-link to="/user/bar">/user/bar</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    const user = {
+        template: '<p>user {{$route.params.id}}</p>'
+    };
+    const router = new VueRouter({
+        routes:[{path:'/user/:id',component:user}]
+    });
+    const box = new Vue({
+        router
+    }).$mount('#box')
+</script>
+</html>
